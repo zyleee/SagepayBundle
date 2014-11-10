@@ -59,5 +59,14 @@
         >
             <tag name="payum.action" factory="sagepay_onsite" />
         </service>
+        <service
+            id="payum.sagepay.action.fill_order_details"
+            class="Ledjin\Sagepay\Action\FillOrderDetailsAction"
+            public="false"
+        >
+            <argument type="service" id="payum.security.token_factory" />
+
+            <tag name="payum.action" factory="sagepay_onsite" />
+        </service>
     </services>
 </container>
