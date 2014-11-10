@@ -10,3 +10,7 @@ with Ledjin/Sagepay library.
 ## License
 
 SagepayBundle is released under the [MIT License](LICENSE).
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/LedjIn/sagepaybundle/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
