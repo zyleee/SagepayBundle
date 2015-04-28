@@ -27,7 +27,7 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "ledjin/sagepay": "~0.1.@dev",
+        "zyleee/sagepay": "~0.1.@dev",
         "payum/core": "~0.12",
         "payum/payum-bundle": "~0.12"
     },
