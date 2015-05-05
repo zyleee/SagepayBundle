@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+
 
 <!--
 
@@ -13,42 +14,58 @@
 
 <container xmlns="http://symfony.com/schema/dic/services"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://symfony.com/schema/dic/services
-                               http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="sylius.payum.sagepay.action.capture_payment_using_sagepay_onsite.class">Ledjin\Bundle\SagepayBundle\Payum\Sagepay\Action\CapturePaymentUsingSagepayOnsiteAction</parameter>
-        <parameter key="sylius.payum.sagepay.action.notify.class">Ledjin\Bundle\SagepayBundle\Payum\Sagepay\Action\NotifyAction</parameter>
+        <parameter key="payum.sagepay.api.class">Ledjin\Sagepay\Api</parameter>
+        <parameter key="payum.sagepay.action.capture_onsite.class">Ledjin\Sagepay\Action\CaptureOnsiteAction</parameter>
+        <parameter key="payum.sagepay.action.status.class">Ledjin\Sagepay\Action\StatusAction</parameter>
+        <parameter key="payum.sagepay.action.fill_order_details.class">Ledjin\Sagepay\Action\FillOrderDetailsAction</parameter>
+        <parameter key="payum.sagepay.action.notify.class">Ledjin\Sagepay\Action\NotifyAction</parameter>
     </parameters>
 
     <services>
-        
-        <!-- sagepay -->
-        <service id="sylius.payum.sagepay.action.capture_payment_using_sagepay_onsite" class="%sylius.payum.sagepay.action.capture_payment_using_sagepay_onsite.class%" public="false">
-            <call method="setRequest">
-                <argument type="service" id="request" on-invalid="null" strict="false" />
-            </call>
-
-            <call method="setCurrencyConverter">
-                <argument type="service" id="sylius.currency_converter" />
-            </call>
-
-            <call method="setTokenFactory">
-                <argument type="service" id="payum.security.token_factory" />
-            </call>
-
-            <!-- <tag name="payum.action" factory="sagepay_onsite" /> -->
+        <service
+                id="payum.sagepay.api.prototype"
+                class="%payum.sagepay.api.class%"
+                public="false"
+                >
+            <argument type="collection">
+            </argument>
+            <argument type="service" id="payum.buzz.client" />
         </service>
 
-        <!-- <service id="sylius.payum.sagepay.action.notify" class="%sylius.payum.sagepay.action.notify.class%" public="false">
-            <argument type="service" id="payum.context.sagepay_onsite.api" />
-            <argument type="service" id="sylius.repository.payment" />
-            <argument type="service" id="event_dispatcher" />
-            <argument type="service" id="sylius.manager.payment" />
-            <argument type="service" id="sm.factory" />
-            <argument>id</argument>
+        <service
+                id="payum.sagepay.action.capture_onsite"
+                class="%payum.sagepay.action.capture_onsite.class%"
+                public="false"
+                >
+            <tag name="payum.action" factory="sagepay_onsite" />
+        </service>
+
+        <service
+                id="payum.sagepay.action.status"
+                class="%payum.sagepay.action.status.class%"
+                public="false"
+                >
+            <tag name="payum.action" factory="sagepay_onsite" />
+        </service>
+
+        <service
+                id="payum.sagepay.action.notify"
+                class="%payum.sagepay.action.notify.class%"
+                public="false"
+                >
+            <tag name="payum.action" factory="sagepay_onsite" />
+        </service>
+        <service
+                id="payum.sagepay.action.fill_order_details"
+                class="%payum.sagepay.action.fill_order_details.class%"
+                public="false"
+                >
+            <argument type="service" id="payum.security.token_factory" />
 
             <tag name="payum.action" factory="sagepay_onsite" />
-        </service> -->
+        </service>
     </services>
 </container>

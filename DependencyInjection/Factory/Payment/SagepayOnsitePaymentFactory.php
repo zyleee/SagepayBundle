@@ -16,18 +16,6 @@ class SagepayOnsitePaymentFactory extends AbstractPaymentFactory
     /**
      * {@inheritdoc}
      */
-    public function create(ContainerBuilder $container, $contextName, array $config)
-    {
-
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../../Resources/config/payment'));
-        $loader->load('sagepay.xml');
-
-        return parent::create($container, $contextName, $config);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'sagepay_onsite';
