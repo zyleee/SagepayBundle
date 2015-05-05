@@ -28,7 +28,6 @@
         <service
                 id="payum.sagepay.api.prototype"
                 class="%payum.sagepay.api.class%"
-                public="false"
                 >
             <argument type="collection">
             </argument>
@@ -38,7 +37,6 @@
         <service
                 id="payum.sagepay.action.capture_offsite"
                 class="%payum.sagepay.action.capture_offsite.class%"
-                public="false"
                 >
             <tag name="payum.action" factory="sagepay_offsite" />
         </service>
@@ -46,7 +44,6 @@
         <service
                 id="payum.sagepay.action.status"
                 class="%payum.sagepay.action.status.class%"
-                public="false"
                 >
             <tag name="payum.action" factory="sagepay_offsite" />
         </service>
@@ -54,14 +51,12 @@
         <service
                 id="payum.sagepay.action.notify"
                 class="%payum.sagepay.action.notify.class%"
-                public="false"
                 >
             <tag name="payum.action" factory="sagepay_offsite" />
         </service>
         <service
                 id="payum.sagepay.action.fill_order_details"
                 class="%payum.sagepay.action.fill_order_details.class%"
-                public="false"
                 >
             <argument type="service" id="payum.security.token_factory" />
 
