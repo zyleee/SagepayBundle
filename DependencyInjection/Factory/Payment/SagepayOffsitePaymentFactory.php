@@ -4,14 +4,14 @@ namespace Ledjin\Bundle\SagepayBundle\DependencyInjection\Factory\Payment;
 use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-class SagepayOnsitePaymentFactory extends AbstractPaymentFactory
+class SagepayOffsitePaymentFactory extends AbstractPaymentFactory
 {
     /**
      * {@inheritdoc}
      */
     public function getName()
     {
-        return 'sagepay_onsite';
+        return 'sagepay_offsite';
     }
 
     /**
@@ -32,7 +32,7 @@ class SagepayOnsitePaymentFactory extends AbstractPaymentFactory
      */
     protected function getPayumPaymentFactoryClass()
     {
-        return 'Ledjin\Sagepay\OnsitePaymentFactory';
+        return 'Ledjin\Sagepay\OffsitePaymentFactory';
     }
 
     /**

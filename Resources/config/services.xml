@@ -18,7 +18,7 @@
 
     <parameters>
         <parameter key="payum.sagepay.api.class">Ledjin\Sagepay\Api</parameter>
-        <parameter key="payum.sagepay.action.capture_onsite.class">Ledjin\Sagepay\Action\CaptureOnsiteAction</parameter>
+        <parameter key="payum.sagepay.action.capture_offsite.class">Ledjin\Sagepay\Action\CaptureOffsiteAction</parameter>
         <parameter key="payum.sagepay.action.status.class">Ledjin\Sagepay\Action\StatusAction</parameter>
         <parameter key="payum.sagepay.action.fill_order_details.class">Ledjin\Sagepay\Action\FillOrderDetailsAction</parameter>
         <parameter key="payum.sagepay.action.notify.class">Ledjin\Sagepay\Action\NotifyAction</parameter>
@@ -36,11 +36,11 @@
         </service>
 
         <service
-                id="payum.sagepay.action.capture_onsite"
-                class="%payum.sagepay.action.capture_onsite.class%"
+                id="payum.sagepay.action.capture_offsite"
+                class="%payum.sagepay.action.capture_offsite.class%"
                 public="false"
                 >
-            <tag name="payum.action" factory="sagepay_onsite" />
+            <tag name="payum.action" factory="sagepay_offsite" />
         </service>
 
         <service
@@ -48,7 +48,7 @@
                 class="%payum.sagepay.action.status.class%"
                 public="false"
                 >
-            <tag name="payum.action" factory="sagepay_onsite" />
+            <tag name="payum.action" factory="sagepay_offsite" />
         </service>
 
         <service
@@ -56,7 +56,7 @@
                 class="%payum.sagepay.action.notify.class%"
                 public="false"
                 >
-            <tag name="payum.action" factory="sagepay_onsite" />
+            <tag name="payum.action" factory="sagepay_offsite" />
         </service>
         <service
                 id="payum.sagepay.action.fill_order_details"
@@ -65,7 +65,7 @@
                 >
             <argument type="service" id="payum.security.token_factory" />
 
-            <tag name="payum.action" factory="sagepay_onsite" />
+            <tag name="payum.action" factory="sagepay_offsite" />
         </service>
     </services>
 </container>

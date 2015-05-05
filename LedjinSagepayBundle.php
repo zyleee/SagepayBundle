@@ -2,7 +2,7 @@
 
 namespace Ledjin\Bundle\SagepayBundle;
 
-use Ledjin\Bundle\SagepayBundle\DependencyInjection\Factory\Payment\SagepayOnsitePaymentFactory;
+use Ledjin\Bundle\SagepayBundle\DependencyInjection\Factory\Payment\SagepayOffsitePaymentFactory;
 use Payum\Bundle\PayumBundle\DependencyInjection\PayumExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -17,6 +17,6 @@ class LedjinSagepayBundle extends Bundle
         /** @var  PayumExtension $payumExtension */
         $payumExtension = $container->getExtension('payum');
 
-        $payumExtension->addPaymentFactory(new SagepayOnsitePaymentFactory);
+        $payumExtension->addPaymentFactory(new SagepayOffsitePaymentFactory);
     }
 }
