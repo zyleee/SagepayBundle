@@ -14,9 +14,10 @@ class LedjinSagepayBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
-        /** @var  PayumExtension $payumExtension */
-        $payumExtension = $container->getExtension('payum');
+        parent::build($container);
 
-        $payumExtension->addPaymentFactory(new SagepayOffsitePaymentFactory);
+        /** @var $extension PayumExtension */
+        $extension = $container->getExtension('payum');
+        $extension->addPaymentFactory(new SagepayOffsitePaymentFactory);
     }
 }
